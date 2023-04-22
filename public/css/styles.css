@@ -4,3 +4,64 @@
 *:after {
   box-sizing: border-box;
 }
+
+#top-header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.siteName {
+  grid-column: 1;
+  //justify-left;
+}
+#tools {
+  grid-column:2;
+  justify-content: end;
+}
+
+#delorean_upgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.upgrade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.upgrade img {
+  max-width: 100%;
+}
+
+#navigation {
+  background-color: black; 
+  color: white;
+}
+
+#navigation ul {
+  list-style-type: none;  /* Remove the bullets from the list items */
+  margin: 0;
+  padding: 0;
+  display: flex;  /* Use flexbox to lay out the nav bar horizontally */
+  justify-content: space-evenly;  /* Distribute the list items evenly */
+}
+
+#navigation li {
+  flex-grow: 1;  /* Allow each list item to grow and take up equal space */
+  text-align: center;  /* Center the text within each list item */
+  padding-top: 
+}
+
+#navigation li a:hover {
+  background-color: white;
+  color: black;  /* Change the background color of a list item on hover */
+}
+
+#navigation a {
+  display: block;  /* Make the link fill the entire list item */
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+}
