@@ -58,6 +58,25 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the vehicle view HTML
+* ************************************ */
+Util.buildVehiclePage = async function(vehicle){
+  let body
+  body = '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>'
+  body += '<img src="' + vehicle.inv_image 
+  +'" alt="Image of '+ vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model 
+  +' on CSE Motors" />'
+  body +='<div class="price">'
+  body += '$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)
+  body += '</div>'
+  body += '<div class="details">'
+  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
+  body += 'color: ' + vehicle.inv_color
+  body += 'description: ' + vehicle.inv_description
+  return body
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
