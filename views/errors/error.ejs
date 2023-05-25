@@ -1,0 +1,12 @@
+<!-- HEADING -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/error')
+    } %>
+
+<!-- Message -->
+<%- message %>
+
+<!-- inventory items -->
+<%# grid %>

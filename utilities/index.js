@@ -62,9 +62,9 @@ Util.buildClassificationGrid = async function(data){
 * Build the vehicle view HTML
 * ************************************ */
 Util.buildVehiclePage = async function(vehicle){
+  vehicle = vehicle[0]
   let body
-  body = '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>'
-  body += '<img src="' + vehicle.inv_image 
+  body = '<img src="' + vehicle.inv_image 
   +'" alt="Image of '+ vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model 
   +' on CSE Motors" />'
   body +='<div class="price">'
