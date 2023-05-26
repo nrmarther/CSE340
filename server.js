@@ -10,6 +10,7 @@ const env = require("dotenv").config()
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
+const invController = require("./controllers/invController")
 const utilities = require("./utilities/")
 
 /* ***********************
@@ -28,11 +29,17 @@ app.use(require("./routes/static"))
 app.get ("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
-app.use("/inv", require("./routes/inventoryRoute"))
+app.use("/inv", require('./routes/inventoryRoute'))
+
 
 // File Not Found Route
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: 'Sorry, we appear to have lost that page. Get over it.'})
+})
+
+//internal server error
+app.use(async (req, res, next) => {
+  next({status: 500, message: 'Sorry, we do not seem to have that page. Our database pooped itself.'})
 })
 
 /* ***********************
@@ -42,9 +49,11 @@ app.use(async (req, res, next) => {
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404){ message = err.message
+  } else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
     title: err.status || 'Server Error',
-    message: err.message,
+    message,
     nav
   })
 })

@@ -72,8 +72,8 @@ Util.buildVehiclePage = async function(vehicle){
   body += 'Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)
   body += '</div>'
   body += '<div class="details">'
-  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</br>'
-  body += 'Color: ' + vehicle.inv_color + '</br>'
+  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</br></br>'
+  body += 'Color: ' + vehicle.inv_color + '</br></br>'
   body += 'Description: ' + vehicle.inv_description + '</div></div>'
   body += '</section>'
   return body

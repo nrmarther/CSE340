@@ -20,11 +20,10 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 /* ***************************
- *  Build inventory by vehicle view
+ *  Build inventory vehicle view
  * ************************** */
 invCont.buildByInvId = async function (req, res, next) {
   const inventory_id = req.params.invId
-  console.log(inventory_id)
   const data = await invModel.getInventoryByInvId(inventory_id)
   const details = await utilities.buildVehiclePage(data)
   let nav = await utilities.getNav()
@@ -34,6 +33,14 @@ invCont.buildByInvId = async function (req, res, next) {
     nav,
     details,
   })
+}
+
+invCont.throwError = async function(req, res, next) {
+  try{
+    throw new Error("this is my epic scary 500 error")
+  }catch(error){
+    next(error)
+  }
 }
 
 module.exports = invCont;

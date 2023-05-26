@@ -162,10 +162,13 @@ button {
 
 /* styling for vehicle details page */
 #vehicle-img img{
+  max-width: 100%;
   border-radius: 3px;
+  padding-right:1em;
 }
 .price {
   font-size: x-large;
+
 }
 
 @media only screen and (min-width:700px) {
