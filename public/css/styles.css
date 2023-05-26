@@ -16,6 +16,7 @@
   height:80%;
   align-content: center;
   background-color: white;
+  padding: .5em;
 }
 
 #top-header {
@@ -50,10 +51,6 @@
 }
 
 /* navigation styling */
-#navigation {
-  background-color: black;
-  color: white;
-}
 
 #navigation ul {
   list-style-type: none; 
@@ -81,6 +78,7 @@
   padding: 20px;
   text-decoration: none;
 }
+
 /* Delorean hero section */
 #hero img {
   position: relative;
@@ -145,8 +143,32 @@ button {
   border-radius: 3px;
   padding: 15px 10px;
 }
+/* specific styling for inventory page */
+#inv-display {
+  list-style-type: none;
+}
+#inv-display li {
+  margin: 1em;
+  border-radius: 3px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 1em;
+}
+#inv-display li img {
+  width:100%;
+  border-radius: 7px 7px 0 0;
+}
 
-@media only screen and (min-width:625px) {
+/* styling for vehicle details page */
+#vehicle-img img{
+  border-radius: 3px;
+}
+.price {
+  font-size: x-large;
+}
+
+@media only screen and (min-width:700px) {
  
   #wrapper{
     background-image: url("../images/site/small_check.jpg");
@@ -180,5 +202,16 @@ button {
   #delorean_upgrades {
     grid-column: 1;
     grid-row: 1;
+  }
+
+  #inv-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* styling for vehicle details page */
+  #details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -64,16 +64,18 @@ Util.buildClassificationGrid = async function(data){
 Util.buildVehiclePage = async function(vehicle){
   vehicle = vehicle[0]
   let body
-  body = '<img src="' + vehicle.inv_image 
+  body = '<section id="details">'
+  body += '<div id="vehicle-img"><img src="' + vehicle.inv_image 
   +'" alt="Image of '+ vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model 
-  +' on CSE Motors" />'
-  body +='<div class="price">'
-  body += '$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)
+  +' on CSE Motors" /></div>'
+  body +='<div class="vehicle-info>"><div class="price">'
+  body += 'Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)
   body += '</div>'
   body += '<div class="details">'
-  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
-  body += 'color: ' + vehicle.inv_color
-  body += 'description: ' + vehicle.inv_description
+  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</br>'
+  body += 'Color: ' + vehicle.inv_color + '</br>'
+  body += 'Description: ' + vehicle.inv_description + '</div></div>'
+  body += '</section>'
   return body
 }
 
