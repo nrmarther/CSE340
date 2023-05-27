@@ -173,7 +173,7 @@ button {
 
 @media only screen and (min-width:700px) {
  
-  #wrapper{
+  body{
     background-image: url("../images/site/small_check.jpg");
   }
   #main-content {
