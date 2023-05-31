@@ -67,13 +67,13 @@ Util.buildVehiclePage = async function(vehicle){
   body = '<section id="details">'
   body += '<div id="vehicle-img"><img src="' + vehicle.inv_image 
   +'" alt="Image of '+ vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model 
-  +' on CSE Motors" /></div>'
+  +' on CSE Motors" ></div>'
   body +='<div class="vehicle-info>"><div class="price">'
   body += 'Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price)
   body += '</div>'
   body += '<div class="details">'
-  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</br></br>'
-  body += 'Color: ' + vehicle.inv_color + '</br></br>'
+  body += 'Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '<br><br>'
+  body += 'Color: ' + vehicle.inv_color + '<br><br>'
   body += 'Description: ' + vehicle.inv_description + '</div></div>'
   body += '</section>'
   return body
