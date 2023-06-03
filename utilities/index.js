@@ -79,6 +79,44 @@ Util.buildVehiclePage = async function(vehicle){
   return body
 }
 
+/* **************************************
+* Build the login view HTML
+* ************************************ */
+Util.buildLogin = async function(req, res, next){
+  let login
+  login = '<form id="login">'
+  login += '<label for="account_email">Email:</label><br>'
+  login += '<input type="text" id="account_email" name="account_email"><br>'
+  login += '<label for="account_password">Password:</label><br>'
+  login += '<input type="password" id="account_password" name="account_password">'
+  login += '<span id="pswdBtn">Show Password</span><br>'
+  login += '<input type="submit" value="Log In">'
+  login += '<p>No account? <a href="/account/register">Sign-up</a></p>'
+  login += '</form>'
+  return login
+}
+
+/* **************************************
+* Build the register view HTML
+* ************************************ */
+Util.buildRegister = async function(req, res, next){
+  let register
+  register = '<form id="register" action="/account/register" method="post">'
+  register += '<label for="account_firstname">First Name:</label><br>'
+  register += '<input type="text" id="account_firstname" name="account_firstname"><br>'
+  register += '<label for="account_lastname">Last Name:</label><br>'
+  register += '<input type="text" id="account_lastname" name="account_lastname"><br>'
+  register += '<label for="account_email">Email:</label><br>'
+  register += '<input type="text" id="account_email" name="account_email"><br>'
+  register += '<label for="account_password">Password:</label><br>'
+  register += '<p id="password_requirements">(Password must be at least 12 characters and contain at least one capital letter, one lower-case letter, and one special character)</p>'
+  register += '<input type="password" id="account_password" name="account_password">'
+  register += '<span id="pswdBtn">Show Password</span><br>'
+  register += '<input type="submit" value="Log In">'
+  register += '</form>'
+  return register
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

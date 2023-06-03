@@ -14,6 +14,7 @@ const invController = require("./controllers/invController")
 const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
@@ -54,6 +55,9 @@ app.get ("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", require('./routes/inventoryRoute'))
 
+// Account route
+app.use("/account", require('./routes/accountRoute'))
+
 
 // File Not Found Route
 app.use(async (req, res, next) => {
@@ -80,6 +84,9 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
+app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * Local Server Information

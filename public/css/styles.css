@@ -168,7 +168,54 @@ button {
 }
 .price {
   font-size: x-large;
+}
 
+/* styling for login form */
+#login {
+  display: block;
+  margin: auto;
+  padding: .5em;
+  border-radius: 5px;
+  border: 3px solid grey;
+  width: 500px;
+  background-color: teal;
+  color: white;
+  font-size: x-large;
+}
+#login input {
+  border-radius: 5px;
+  border: 1px solid grey
+}
+#login a {
+  color: white;
+}
+
+#pswdBtn {
+  border: 1px solid grey;
+  background-color: white;
+  color: teal;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 1em;
+  font-size: small;
+  width: 7em;
+  text-align: center;
+}
+
+/* styling for registration form */
+#register {
+  margin: auto;
+  padding: .5em;
+  border-radius: 5px;
+  border: 3px solid grey;
+  width: 500px;
+  background-color: teal;
+  color: white;
+  font-size: large;
+}
+#register input {
+  border-radius: 5px;
+  border: 1px solid grey
 }
 
 @media only screen and (min-width:700px) {
