@@ -10,7 +10,7 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
         title: "Login",
         nav,
-        login,
+        errors: null,
     })
 }
 
@@ -23,7 +23,7 @@ async function buildRegister(req, res, next) {
     res.render("account/register", {
         title: "Register",
         nav,
-        register,
+        errors: null,
     })
 }
 
@@ -32,6 +32,8 @@ async function buildRegister(req, res, next) {
 * *************************************** */
 async function registerAccount(req, res) {
     let nav = await utilities.getNav()
+    let register = await utilities.buildRegister()
+    let login = await utilities.buildLogin()
     const { account_firstname,
             account_lastname,
             account_email,
@@ -50,15 +52,19 @@ async function registerAccount(req, res) {
         "notice",
         `Congratulations, you\'re registered ${account_firstname}. Please log in.`
       )
-      res.status(201).render("/login", {
+      res.status(201).render("account/login", {
         title: "Login",
         nav,
+        errors: null,
+        // login,
       })
     } else {
       req.flash("notice", "Sorry, the registration failed.")
-      res.status(501).render("/register", {
+      res.status(501).render("account/register", {
         title: "Registration",
         nav,
+        errors: null,
+        // register,
       })
     }
   }

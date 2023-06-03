@@ -37,6 +37,9 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -84,9 +87,6 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
-
-app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * Local Server Information
