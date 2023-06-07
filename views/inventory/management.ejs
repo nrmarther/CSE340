@@ -1,0 +1,25 @@
+<!-- HEADING -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<!-- Message -->
+<%- messages() %>
+
+<!-- Errors -->
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<!-- management links items -->
+<h2>Where Would you like to go?</h2>
+<div id="management-links">
+    <a href="/inventory/addClassification" class="management-link" id="addClass-link">Add New Classification</a>
+    <a href="/inventory/addInventory" class="management-link" id="addInv-link">Add New Vehicle to Inventory</a>
+</div>

@@ -11,4 +11,8 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId))
 
 router.get("/KobeError", utilities.handleErrors(invController.throwError));
 
+router.get("/mgnt", utilities.handleErrors(invController.buildManagement));
+
+
+
 module.exports = router;

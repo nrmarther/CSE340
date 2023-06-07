@@ -37,6 +37,18 @@ invCont.buildByInvId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build inventory management view
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Management",
+    nav,
+    errors: null,
+  })
+}
+
 invCont.throwError = async function(req, res, next) {
   try{
     throw new Error("this is my epic scary 500 error")

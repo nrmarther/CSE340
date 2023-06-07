@@ -264,4 +264,28 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  /* styling for management page */
+  h2 {
+    text-align: center;
+  }
+  #management-links {
+    display: grid;
+  }
+  #addClass-link {
+    grid-column: 1;
+  }
+  #addInv-link {
+    grid-column: 2;
+  }
+  .management-link {
+    margin: auto;
+    margin-bottom: 4em;
+    background-color: teal;
+    color: white;
+    border-radius: .75em;
+    padding: .75em;
+    text-decoration: none;
+  }
+
 }
