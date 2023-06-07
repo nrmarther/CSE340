@@ -213,10 +213,58 @@ button {
   color: white;
   font-size: large;
 }
-#register input {
+input {
+  padding: .25em;
   border-radius: 5px;
   border: 1px solid grey
 }
+
+/* styling for management page */
+  h2 {
+    text-align: center;
+  }
+  #management-links {
+    display: grid;
+  }
+  #addClass-link {
+    grid-column: 1;
+  }
+  #addInv-link {
+    grid-column: 2;
+  }
+  .management-link {
+    margin: auto;
+    margin-bottom: 4em;
+    background-color: teal;
+    color: white;
+    border-radius: .75em;
+    padding: .75em;
+    text-decoration: none;
+  }
+
+  /* styling for add classification page */
+  #new-classification {
+    margin: auto;
+    margin-bottom: 4em;
+    padding: .5em;
+    border-radius: 5px;
+    border: 3px solid grey;
+    width: 500px;
+    background-color: teal;
+    color: white;
+    font-size: large;
+  }
+  i {
+    font-size: small;
+  }
+  #submit-button {
+    margin-top: 1em;
+    border: none !important;
+    border-radius: .5em !important;
+    background-color: black;
+    color: white;
+    padding: .5em !important;
+  }
 
 @media only screen and (min-width:700px) {
  
@@ -264,28 +312,4 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
-  /* styling for management page */
-  h2 {
-    text-align: center;
-  }
-  #management-links {
-    display: grid;
-  }
-  #addClass-link {
-    grid-column: 1;
-  }
-  #addInv-link {
-    grid-column: 2;
-  }
-  .management-link {
-    margin: auto;
-    margin-bottom: 4em;
-    background-color: teal;
-    color: white;
-    border-radius: .75em;
-    padding: .75em;
-    text-decoration: none;
-  }
-
 }

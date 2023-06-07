@@ -49,11 +49,51 @@ invCont.buildManagement = async function (req, res, next) {
   })
 }
 
+invCont.buildNewClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Create New Classification",
+    nav,
+    errors: null,
+  })
+}
+
 invCont.throwError = async function(req, res, next) {
   try{
     throw new Error("this is my epic scary 500 error")
   }catch(error){
     next(error)
+  }
+}
+
+/* ****************************************
+*  Process new classification
+* *************************************** */
+invCont.newClassification = async function(req, res) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  const addClassResult = await invModel.insertNewClassification(classification_name)
+
+  if (addClassResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you added ${classification_name} to the list of classifications.`
+    )
+    res.status(201).render("inv/addClass", {
+      title: "Create New Classification",
+      nav,
+      errors: null,
+    })
+  } else {
+    req.flash(
+      "notice",
+      "Sorry, adding this Classification failed.")
+      res.status(501).render("inv/addClass", {
+        title: "Create New Classification",
+        nav,
+        errors: null,
+      })
   }
 }
 
