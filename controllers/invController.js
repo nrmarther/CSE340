@@ -60,6 +60,15 @@ invCont.buildNewClassification = async function (req, res, next) {
   })
 }
 
+invCont.buildNewInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/addInventory", {
+    title: "Add to Inventory",
+    nav,
+    errors: null,
+  })
+}
+
 invCont.throwError = async function(req, res, next) {
   try{
     throw new Error("this is my epic scary 500 error")
@@ -97,6 +106,70 @@ invCont.newClassification = async function(req, res) {
         nav,
         errors: null,
       })
+  }
+}
+
+/* ****************************************
+*  Process new Inventory
+* *************************************** */
+invCont.newInventory = async function(req, res) {
+  let nav = await utilities.getNav()
+  const { inv_make
+    , inv_model
+    , inv_year
+    , inv_description
+    , inv_image
+    , inv_thumbnail
+    , inv_price
+    , inv_miles
+    , inv_color
+    , classification_name } = req.body
+
+  //convert price and miles to int
+  let inv_price_int, inv_miles_int
+  try {
+    inv_price_int = parseInt(inv_price)
+    inv_miles_int = parseInt(inv_miles)
+  } catch (error) {
+    req.flash("notice", "sorry, there was an error processing vehicle.")
+    res.status(500).render("inventory/addInventory", {
+      title: "Add to Inventory",
+      nav,
+      errors: null,
+    })
+  }
+
+  const addInvResult = await invModel.insertNewVehicle(inv_make
+    , inv_model
+    , inv_year
+    , inv_description
+    , inv_image
+    , inv_thumbnail
+    , inv_price_int
+    , inv_miles_int
+    , inv_color
+    , classification_name)
+
+  if (addInvResult) {
+    nav = await utilities.getNav();
+    req.flash(
+      "notice",
+      `Congratulations, you added ${inv_year} ${inv_make} ${inv_model} to the Inventory.`
+    )
+    res.status(201).render("inventory/addInventory", {
+      title: "Add to Inventory",
+      nav,
+      errors: null,
+    })
+  } else {
+    req.flash(
+      "notice",
+      "Sorry, adding this vehicle failed.")
+    res.status(501).render("inventory/addInventory", {
+      title: "Add to Inventory",
+      nav,
+      errors: null,
+    })
   }
 }
 

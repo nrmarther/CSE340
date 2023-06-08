@@ -1,0 +1,54 @@
+<!-- HEADING -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<!-- Message -->
+<%- messages() %>
+
+<!-- Errors -->
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<!-- add classification form -->
+<form action="/inv/addInv" method="post" id="new-Inventory">
+    <h2>Add a New Vehicle to Inventory</h2>
+    <label for="inv_make">Vehicle Make: </label>
+    <input type="text" name="inv_make" id="inv_make" value="<%= locals.inv_make %>" placeholder="Ford, Chevy, VolksWagen, etc" required><br>
+    <!-- inv_model -->
+    <label for="inv_model">Vehicle Model: </label>
+    <input type="text" name="inv_model" id="inv_model" value="<%= locals.inv_model %>" placeholder="Silverado, Escape, Jetta, etc" required><br>
+    <!-- inv_year -->
+    <label for="inv_year">Vehicle Year: </label>
+    <input type="text" name="inv_year" id="inv_year" value="<%= locals.inv_year %>" placeholder="1996, 2017, 1955" required><br>
+    <!-- inv_description -->
+    <label for="inv_description">Vehicle Description: </label><br>
+    <input type="text" name="inv_description" id="inv_description" value="<%= locals.inv_description %>"placeholder="This car is a great Family car ..." size="500" required><br>
+    <!-- inv_image -->
+    <label for="inv_image">Vehicle Image: </label>
+    <input type="image" name="inv_image" id="inv_image" value="<%= locals.inv_image %>"required><br>
+    <!-- inv_thumbnail -->
+    <label for="inv_thumbnail">Vehicle thumbnail: </label>
+    <input type="image" name="inv_thumbnail" id="inv_thumbnail" value="<%= locals.inv_thumbnail %>"required><br>
+    <!-- inv_price -->
+    <label for="inv_price">Vehicle Price: </label>
+    <input type="number" name="inv_price" id="inv_price" value="<%= locals.inv_price %>"required><br>
+    <!-- inv_miles -->
+    <label for="inv_miles">Vehicle Mileage: </label>
+    <input type="number" name="inv_miles" id="inv_miles" value="<%= locals.inv_miles %>"required><br>
+    <!-- inv_color -->
+    <label for="inv_color">Vehicle Color: </label>
+    <input type="" name="inv_color" id="inv_color" value="<%= locals.inv_color %>"required><br>
+    <!-- classification_id (dropdown?) -->
+    <label for="classification_name">Name of Classification: </label>
+    <input type="text" name="classification_name" id="classification_name" placeholder="Classification Name" required pattern="([A-Za-z0-9]{1,})"><br>
+
+    <input type="submit" value="Add New Vehicle" id="submit-button">
+</form>
