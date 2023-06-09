@@ -30,13 +30,13 @@
     <input type="text" name="inv_year" id="inv_year" value="<%= locals.inv_year %>" placeholder="1996, 2017, 1955" required><br>
     <!-- inv_description -->
     <label for="inv_description">Description: </label><br>
-    <textarea name="inv_description" id="inv_description" value="<%= locals.inv_description %>" placeholder="This car is a great Family car ..." rows="4" cols="50" required></textarea><br>
+    <textarea name="inv_description" id="inv_description" placeholder="This car is a great Family car ..." rows=4 cols=50 required><%= locals.inv_description %></textarea><br>
     <!-- inv_image -->
     <label for="inv_image">Image: </label>
-    <input type="image" name="inv_image" id="inv_image" value="<%= locals.inv_image %>" required><br>
+    <input type="text" name="inv_image" id="inv_image" value="/images/vehicles/no-image.png" required><br>
     <!-- inv_thumbnail -->
     <label for="inv_thumbnail">thumbnail: </label>
-    <input type="image" name="inv_thumbnail" id="inv_thumbnail" value="<%= locals.inv_thumbnail %>" required><br>
+    <input type="text" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicles/no-image-tn.png" required><br>
     <!-- inv_price -->
     <label for="inv_price">Price: </label>
     <input type="number" name="inv_price" id="inv_price" value="<%= locals.inv_price %>" required><br>
@@ -45,9 +45,9 @@
     <input type="number" name="inv_miles" id="inv_miles" value="<%= locals.inv_miles %>" required><br>
     <!-- inv_color -->
     <label for="inv_color">Color: </label>
-    <input type="" name="inv_color" id="inv_color" value="<%= locals.inv_color %>" required><br>
+    <input type="text" name="inv_color" id="inv_color" value="<%= locals.inv_color %>" required><br>
     <!-- classification_id (dropdown?) -->
-    <label for="classification_name">Classification: </label>
+    <label for="classification_id">Classification: </label>
     <%- dropdown %><br>
 
     <input type="submit" value="Add New Vehicle" id="submit-button">

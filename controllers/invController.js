@@ -60,6 +60,9 @@ invCont.buildNewClassification = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build new in ventory view
+ * ************************** */
 invCont.buildNewInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   let dropdown = await utilities.getClassifications()
@@ -125,7 +128,7 @@ invCont.newInventory = async function(req, res) {
     , inv_price
     , inv_miles
     , inv_color
-    , classification_name } = req.body
+    , classification_id } = req.body
 
   //convert price and miles to int
   let inv_price_int, inv_miles_int
@@ -142,7 +145,8 @@ invCont.newInventory = async function(req, res) {
     })
   }
   //inserts data into inventory table
-  const addInvResult = await invModel.insertNewVehicle(inv_make
+  const addInvResult = await invModel.insertNewVehicle(
+      inv_make
     , inv_model
     , inv_year
     , inv_description
@@ -151,7 +155,7 @@ invCont.newInventory = async function(req, res) {
     , inv_price_int
     , inv_miles_int
     , inv_color
-    , classification_name)
+    , classification_id)
 
     //success
   if (addInvResult) {

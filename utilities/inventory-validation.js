@@ -77,7 +77,7 @@ validate.checkInvData = async (req, res, next) => {
           , inv_price
           , inv_miles
           , inv_color
-          , classification_name } = req.body
+          , classification_id } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -97,7 +97,7 @@ validate.checkInvData = async (req, res, next) => {
         inv_price, 
         inv_miles, 
         inv_color, 
-        classification_name
+        classification_id
       })
       return
     }

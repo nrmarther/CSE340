@@ -284,22 +284,23 @@ input , textarea{
    input:required:valid, input:focus:valid textarea:focus:valid, textarea:required:valid{
     background-color: #ACD1AF;
    }
-   .success li {
+   .success, .notice {
+    margin-left:-40px;
+   }
+   .success li, .notice li{
     list-style: none;
-    background-color: #ACD1AF;
     border-radius: .25em;
     padding: .5em;
     padding-left: 1em;
     margin: .5em;
     font-weight: bold;
    }
+
+   .success li {
+    background-color: #ACD1AF;
+   }
    .notice li {
-    list-style: none;
     background-color: pink;
-    border-radius: .25em;
-    padding: .5em;
-    padding-left: 1em;
-    margin: .5em;
    }
 
 @media only screen and (min-width:700px) {
