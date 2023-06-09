@@ -82,13 +82,12 @@ validate.checkInvData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
+      let dropdown = await utilities.getClassifications()
       res.render("inventory/addInventory", {
         errors,
         title: "Add New Vehicle to Inventory",
+        dropdown,
         nav,
-        account_firstname,
-        account_lastname,
-        account_email,
         inv_make,
         inv_model, 
         inv_year, 

@@ -62,9 +62,11 @@ invCont.buildNewClassification = async function (req, res, next) {
 
 invCont.buildNewInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
+  let dropdown = await utilities.getClassifications()
   res.render("./inventory/addInventory", {
     title: "Add to Inventory",
     nav,
+    dropdown,
     errors: null,
   })
 }
@@ -83,7 +85,6 @@ invCont.throwError = async function(req, res, next) {
 invCont.newClassification = async function(req, res) {
   let nav = await utilities.getNav()
   const { classification_name } = req.body
-
   const addClassResult = await invModel.insertNewClassification(classification_name)
 
   if (addClassResult) {
@@ -114,6 +115,7 @@ invCont.newClassification = async function(req, res) {
 * *************************************** */
 invCont.newInventory = async function(req, res) {
   let nav = await utilities.getNav()
+  let dropdown = await utilities.getClassifications()
   const { inv_make
     , inv_model
     , inv_year
@@ -135,10 +137,11 @@ invCont.newInventory = async function(req, res) {
     res.status(500).render("inventory/addInventory", {
       title: "Add to Inventory",
       nav,
+      dropdown,
       errors: null,
     })
   }
-
+  //inserts data into inventory table
   const addInvResult = await invModel.insertNewVehicle(inv_make
     , inv_model
     , inv_year
@@ -150,24 +153,28 @@ invCont.newInventory = async function(req, res) {
     , inv_color
     , classification_name)
 
+    //success
   if (addInvResult) {
-    nav = await utilities.getNav();
     req.flash(
-      "notice",
+      "success",
       `Congratulations, you added ${inv_year} ${inv_make} ${inv_model} to the Inventory.`
     )
     res.status(201).render("inventory/addInventory", {
       title: "Add to Inventory",
       nav,
+      dropdown,
       errors: null,
+
     })
-  } else {
+    //failure
+  } else { 
     req.flash(
       "notice",
       "Sorry, adding this vehicle failed.")
     res.status(501).render("inventory/addInventory", {
       title: "Add to Inventory",
       nav,
+      dropdown,
       errors: null,
     })
   }

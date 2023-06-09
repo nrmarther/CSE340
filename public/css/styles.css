@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* fonts */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3{
+  font-weight: bold;
+}
+
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -213,10 +223,11 @@ button {
   color: white;
   font-size: large;
 }
-input {
+input , textarea{
   padding: .25em;
   border-radius: 5px;
-  border: 1px solid grey
+  border: 1px solid grey;
+  margin: .25em;
 }
 
 /* styling for management page */
@@ -242,8 +253,8 @@ input {
     text-decoration: none;
   }
 
-  /* styling for add classification page */
-  #new-classification {
+  /* styling for add classification page and forms*/
+  form {
     margin: auto;
     margin-bottom: 4em;
     padding: .5em;
@@ -265,6 +276,31 @@ input {
     color: white;
     padding: .5em !important;
   }
+
+  input:required:invalid, input:focus:invalid, textarea:focus:invalid, textarea:required:invalid {
+    background-color: pink;
+   }
+
+   input:required:valid, input:focus:valid textarea:focus:valid, textarea:required:valid{
+    background-color: #ACD1AF;
+   }
+   .success li {
+    list-style: none;
+    background-color: #ACD1AF;
+    border-radius: .25em;
+    padding: .5em;
+    padding-left: 1em;
+    margin: .5em;
+    font-weight: bold;
+   }
+   .notice li {
+    list-style: none;
+    background-color: pink;
+    border-radius: .25em;
+    padding: .5em;
+    padding-left: 1em;
+    margin: .5em;
+   }
 
 @media only screen and (min-width:700px) {
  
