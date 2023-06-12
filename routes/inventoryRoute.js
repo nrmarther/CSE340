@@ -6,6 +6,9 @@ const utilities = require("../utilities/")
 const classValidate = require("../utilities/classification-validation")
 const invValidate = require("../utilities/inventory-validation")
 
+// Route to management page
+router.get("/", utilities.handleErrors(invController.buildManagement));
+
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
@@ -14,9 +17,6 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId))
 
 // Route to error
 router.get("/KobeError", utilities.handleErrors(invController.throwError));
-
-// Route to management page
-router.get("/mgnt", utilities.handleErrors(invController.buildManagement));
 
 // Route to Add Classification management form
 router.get("/addClass", utilities.handleErrors(invController.buildNewClassification));
