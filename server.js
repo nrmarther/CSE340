@@ -15,6 +15,7 @@ const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -46,6 +47,9 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Routes

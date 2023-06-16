@@ -21,7 +21,7 @@ validate.invRules = () => {
         .withMessage("Please provide a vehicle model."),
 
         //vehicle year trim, 4 characters, is number
-        body("inv_make")
+        body("inv_year")
         .trim()
         .isLength({ min: 4, max: 4 })
         .withMessage("Please provide a 4-digit vehicle year."),
@@ -44,13 +44,11 @@ validate.invRules = () => {
 
         //price is trimmed, and converted to int
         body("inv_price")
-        .trim()
         .isLength({ min: 1 })
         .withMessage("Please provide a vehicle price."),
 
         //miles is trimmed, 9 digits max, and converted to int
-        body("inv_price")
-        .trim()
+        body("inv_miles")
         .isLength({ min: 1, max: 9})
         .withMessage("Please provide vehicle's mileage."),
 
