@@ -9,6 +9,15 @@ const invValidate = require("../utilities/inventory-validation")
 // Route to management page
 router.get("/", utilities.handleErrors(invController.buildManagement));
 
+//route to get inventory as json objects
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+//build the edit Inventory View
+router.get("/edit/:inventory_id", utilities.handleErrors(invController.editInventoryView))
+
+//build the delete inventory view
+router.get("/delete/:inventory_id", utilities.handleErrors(invController.delInventoryView))
+
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
@@ -39,6 +48,20 @@ router.post(
   invValidate.invRules(),
   invValidate.checkInvData,
   utilities.handleErrors(invController.newInventory)
+)
+
+//Process update Inventory Data
+router.post(
+  "/update/", 
+  invValidate.invRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
+//Process Delete Inventory Data
+router.post(
+  "/delete/",
+  utilities.handleErrors(invController.deleteInventory)
 )
 
 
