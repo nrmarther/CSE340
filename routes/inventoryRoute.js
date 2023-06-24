@@ -7,16 +7,16 @@ const classValidate = require("../utilities/classification-validation")
 const invValidate = require("../utilities/inventory-validation")
 
 // Route to management page
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/", utilities.CheckAccType, utilities.handleErrors(invController.buildManagement));
 
 //route to get inventory as json objects
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //build the edit Inventory View
-router.get("/edit/:inventory_id", utilities.handleErrors(invController.editInventoryView))
+router.get("/edit/:inventory_id", utilities.CheckAccType, utilities.handleErrors(invController.editInventoryView))
 
 //build the delete inventory view
-router.get("/delete/:inventory_id", utilities.handleErrors(invController.delInventoryView))
+router.get("/delete/:inventory_id", utilities.CheckAccType, utilities.handleErrors(invController.delInventoryView))
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
@@ -28,10 +28,10 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId))
 router.get("/KobeError", utilities.handleErrors(invController.throwError));
 
 // Route to Add Classification management form
-router.get("/addClass", utilities.handleErrors(invController.buildNewClassification));
+router.get("/addClass", utilities.CheckAccType, utilities.handleErrors(invController.buildNewClassification));
 
 // Route to Add Inventory management form
-router.get("/addVehicle", utilities.handleErrors(invController.buildNewInventory));
+router.get("/addVehicle", utilities.CheckAccType, utilities.handleErrors(invController.buildNewInventory));
 
 // Process new classification data
 router.post(

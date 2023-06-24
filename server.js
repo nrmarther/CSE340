@@ -47,6 +47,10 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+app.get('/clear-cookie', (req, res) => {
+  res.clearCookie('jwt')
+  res.redirect('/')
+})
 
 app.use(cookieParser())
 app.use(utilities.checkJWTToken)
