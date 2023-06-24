@@ -184,4 +184,18 @@ Util.CheckAccType = (req, res, next) => {
   }
 }
 
+/* **************************************
+* Build the account management view HTML
+* ************************************ */
+Util.buildAccountMgnt = async function(req, res, next){
+  let mgnt
+  mgnt += '<h2>Welcome' + res.locals.accountData.account_firstname + '</h2>'
+  mgnt += '<p><a class="management-link" href="account/update/' + res.locals.accountData.account_id +  '">Update Account Info</a></p>'
+  if (res.locals.accountData.account_type == 'Employee' || res.locals.accountData.account_type == 'Admin') {
+    mgnt += '<h2>Inventory Management</h2>'
+    mgnt += '<p><a class="management-link" href="/inv/">Go to Inventory Management</a></p>'
+  }
+  return mgnt
+}
+
 module.exports = Util

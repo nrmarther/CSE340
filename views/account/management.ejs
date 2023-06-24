@@ -16,13 +16,10 @@
 <%  }) %>
  </ul>
 <% } %>
-<h2>Welcome <%- locals.accountData.account_firstname %></h2>
-<% let url = "account/update/" + locals.accountData.account_id %>
-<% document.write('<p><a class="management-link" href="'+ url + '" >Update Account Info</a></p>')%>
-<p><a class="management-link" href=url >Update Account Info</a></p>
 
-
+<h2>Welcome <%- locals.accountData.account_firstname %> </h2>
+<p><a class="management-link" href="account/update/<%=locals.accountData.account_id%>">Update Account Info</a></p>
 <% if (locals.accountData.account_type == 'Employee' || locals.accountData.account_type == 'Admin') { %>
   <h2>Inventory Management</h2>
   <p><a class="management-link" href="/inv/">Go to Inventory Management</a></p>
-  <% } %>
+<% } %>

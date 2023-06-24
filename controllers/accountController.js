@@ -47,8 +47,6 @@ async function buildAccount(req, res, next) {
 * *************************************** */
 async function registerAccount(req, res) {
     let nav = await utilities.getNav()
-    let register = await utilities.buildRegister()
-    let login = await utilities.buildLogin()
     const { account_firstname,
             account_lastname,
             account_email,
