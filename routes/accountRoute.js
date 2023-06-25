@@ -15,6 +15,9 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 // route for registration page
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 
+// route for update account view
+router.get("/update/:account_id", utilities.handleErrors(accountController.buildUpdate))
+
 // Process the registration data
 router.post(
     "/register",
