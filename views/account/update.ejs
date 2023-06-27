@@ -18,7 +18,7 @@
 <% } %>
 
 <!-- update user info form -->
-<form id="updateAccount" action="/account/update" method="post" id=""update>
+<form id="updateAccount" action="/account/update" method="post" id="update">
     <h2>Account Update</h2>
     <label for="account_firstname">First Name:</label><br>
     <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.accountData.account_firstname %>"><br>
@@ -29,12 +29,12 @@
     <input type="submit" value="Update">
     <!-- hidden input for user Id  -->
     <input type="hidden" name="account_id"
-    <% if(locals.account_id) { %> value="<%= locals.accountData.account_id %>"
-    <% } %>>
+  <% if(account_id) { %> value="<%= account_id %>"
+  <% } %>>
   </form>
 
 <!-- update password form -->
-<form id="updatePassword" action="/account/updatePass" method="post" id=""update>
+<form id="updatePassword" action="/account/updatePass" method="post" id="update">
     <h2>Password Update</h2>
     <label for="account_password">Password:</label><br>
     <i>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</i><br>
@@ -43,6 +43,6 @@
     <input type="submit" value="Update Password">
     <!-- hidden input for user Id  -->
     <input type="hidden" name="account_id"
-    <% if(locals.account_id) { %> value="<%= locals.accountData.account_id %>"
-    <% } %>>
+  <% if(account_id) { %> value="<%= account_id %>"
+  <% } %>>
   </form>
