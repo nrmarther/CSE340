@@ -207,7 +207,7 @@ invCont.editInventoryView = async function (req, res, next) {
   const inv_id = parseInt(req.params.inventory_id)
   let nav = await utilities.getNav()
   const itemData = await invModel.getInventoryByInvId(inv_id)
-  const classificationSelect = await utilities.getClassifications(itemData.classification_id)
+  const classificationSelect = await utilities.getClassifications(itemData[0].classification_id)
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
   res.render("./inventory/editInventory", {
     title: "Edit " + itemName,
@@ -265,7 +265,7 @@ invCont.updateInventory = async function (req, res, next) {
     req.flash("success", `The ${itemName} was successfully updated. Yipee.`)
     res.redirect("/inv/")
   } else {
-    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const classificationSelect = await utilities.getClassifications(classification_id)
     const itemName = `${inv_make} ${inv_model}`
     req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/editInventory", {
