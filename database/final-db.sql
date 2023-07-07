@@ -7,4 +7,5 @@ CREATE TABLE IF NOT EXISTS public.message(
     message_from integer NOT NULL
     message_read BOOLEAN NOT NULL DEFAULT false
     message_archived BOOLEAN NOT NULL DEFAULT false
+    CONSTRAINT message_pkey PRIMARY KEY (message_id)
 )

@@ -11,4 +11,6 @@ router.get("/compose", utilities.handleErrors(messageController.buildCompose))
 
 router.get("/archive", utilities.handleErrors(messageController.buildArchive))
 
+router.post("/send", utilities.handleErrors(messageController.sendMessage))
+
 module.exports = router;

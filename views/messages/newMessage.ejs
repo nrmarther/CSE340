@@ -16,13 +16,17 @@
  </ul>
 <% } %>
 
-<form action="#" method="post">
+<form action="/message/send" method="post">
     <h2>Send a New message</h2>
     <label for="message_to">To: </label>
-    <input type="text" name="message_to" id="message_to" placeholder="Recipient" required ><br>
+    <%- sender_dropdown %><br>
     <label for="message_subject">Subject:</label>
     <input type="text" name="message_subject" id="message_subject" placeholder="Message Subject"><br>
     <label for="message_body">Message Text:</label>
     <textarea name="message_body" id="message_body" cols="30" rows="10" placeholder="I hope you are doing well..."></textarea>
     <input type="submit" value="Send Message" id="submit-button">
+    <input type="hidden" name="message_from"
+     <% if(message_from) { %> 
+      value="<%= message_from %>"
+    <% } %>>
 </form>

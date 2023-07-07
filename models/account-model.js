@@ -93,9 +93,14 @@ async function updatePassword(
   }
 }
 
+async function getAccounts(){
+  return await pool.query("SELECT * FROM public.account ORDER BY account_firstname")
+}
+
 module.exports = { registerAccount
                  , checkExistingEmail
                  , getAccountByEmail
                  , getAccountById 
                  , updateAccount
-                 , updatePassword }
+                 , updatePassword
+                 , getAccounts }

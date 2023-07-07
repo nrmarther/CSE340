@@ -303,6 +303,60 @@ input , textarea{
     background-color: pink;
    }
 
+   /* Style for the table */
+#messageList {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+ 
+
+/* Style for the table header */
+#messageList thead {
+  background-color: #f0f0f0;
+}
+
+ 
+
+#messageList th {
+  padding: 12px;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+ 
+
+/* Style for the table body */
+#messageList td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+ 
+
+/* Alternate row color for better readability */
+#messageList tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+ 
+
+/* Hover effect on rows */
+#messageList tbody tr:hover {
+  background-color: #ebebeb;
+}
+
+ 
+
+/* Style for the "Read" column */
+#messageList td:last-child {
+  text-align: center;
+}
+
 @media only screen and (min-width:700px) {
  
   body{

@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model")
+const accModel = require("../models/account-model")
+const messageModel = require("../models/message-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -202,4 +204,45 @@ Util.buildAccountMgnt = async function(req, res, next){
   return mgnt
 }
 
+/* **************************************
+* Build the accounts dropdown
+* ************************************ */
+Util.getAccounts = async function (account_id=null) {
+  let data = await accModel.getAccounts()
+  let dropdown = "<select name='message_to' id='message_to' required>"
+  dropdown += "<option value=''> --Select-- </option>"
+  data.rows.forEach((row) => {
+    dropdown += "<option value=" + row.account_id;
+    if (account_id == row.account_id) {
+      dropdown += " selected ";
+    }
+     dropdown += ">" + row.account_firstname + " " + row.account_lastname + "</option>"
+  })
+  dropdown += "</select>"
+  return dropdown
+}
+
+/* ***************************
+ *  Return unread messages As JSON
+ * ************************** */
+Util.getUnreadMessages = async function (account_id) {
+  let messages = await messageModel.getUnread(account_id)
+  if (messages) {
+    let table = "<table id='messageList'><thead> <tr> <th> From </th><th> Time Sent </th><th> Subject </th> </tr> </thead>"
+    table += "<tbody>"
+    messages.rows.forEach((row) => {
+      table += "<tr> <td>" + row.message_from + "</td>"
+      table += "<td>" + row.message_created + "</td>"
+      table += "<td>" + row.message_subject + "</td> </tr>"
+    })
+    table += " </tbody></table>"
+    return table
+  } else {
+    next(new Error("No Unread Messages"))
+  }
+  console.log("utilities: " + messages)
+}
+
 module.exports = Util
+
+
