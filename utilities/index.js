@@ -223,17 +223,17 @@ Util.getAccounts = async function (account_id=null) {
 }
 
 /* ***************************
- *  Return unread messages As JSON
+ *  build messages tables
  * ************************** */
-Util.getUnreadMessages = async function (account_id) {
-  let messages = await messageModel.getUnread(account_id)
+Util.getMessageTable = async function (messages) {
   if (messages) {
-    let table = "<table id='messageList'><thead> <tr> <th> From </th><th> Time Sent </th><th> Subject </th> </tr> </thead>"
+    let table = "<table id='messageList'><thead> <tr> <th> Time Sent </th> <th> From </th><th> Subject </th> <th> Read </th> </tr> </thead>"
     table += "<tbody>"
     messages.rows.forEach((row) => {
-      table += "<tr> <td>" + row.message_from + "</td>"
-      table += "<td>" + row.message_created + "</td>"
-      table += "<td>" + row.message_subject + "</td> </tr>"
+      table += "<tr> <td>" + row.message_created + "</td>"
+      table += "<td>" + row.account_firstname + " " + row.account_lastname + "</td>"
+      table += "<td><a href='/message/" + row.message_id + "/'>" + row.message_subject + "</a></td>"
+      table += "<td>" + row.message_read + "</td> </tr>"
     })
     table += " </tbody></table>"
     return table
@@ -243,6 +243,15 @@ Util.getUnreadMessages = async function (account_id) {
   console.log("utilities: " + messages)
 }
 
+/* ***************************
+ *  build message page
+ * ************************** */
+Util.buildMessagePage = async function(s, m) {
+  let body
+  body = "<h2>" + s.account_firstname + " " + s.account_lastname + "</h2>"
+  body += "<h2>" + m.message_created + "</h2>"
+  body += "<p>" + m.message_body + "</p>"
+  return body
+}
+
 module.exports = Util
-
-

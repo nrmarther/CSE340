@@ -1,0 +1,47 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<!-- Message -->
+<%- messages() %>
+
+<!-- Errors -->
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<!-- Messages Data -->
+<%- details %>
+
+
+
+<form action="/message/read" method="post">
+  <input type="submit" value="Mark Message as Read">
+  <input type="hidden" name="message_id"
+     <% if(message_id) { %> 
+      value="<%= message_id %>"
+    <% } %>>
+</form>
+<form action="/message/archive" method="post">
+  <input type="submit" value="Archive Message">
+  <input type="hidden" name="message_id"
+     <% if(message_id) { %> 
+      value="<%= message_id %>"
+    <% } %>>
+</form>
+<form action="/message/delete" method="post">
+  <input type="submit" value="Delete Message">
+  <input type="hidden" name="message_id"
+     <% if(message_id) { %> 
+      value="<%= message_id %>"
+    <% } %>>
+</form>
+<p>
+  <a href="/message/archive" class="management-link">Go to Archive</a>
+</p>

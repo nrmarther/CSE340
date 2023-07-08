@@ -303,59 +303,58 @@ input , textarea{
     background-color: pink;
    }
 
-   /* Style for the table */
-#messageList {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
-}
+   #messageList {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #messageList th {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  #messageList td {
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #messageList tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+  }
+  
+  #messageList tbody tr:hover {
+    background-color: #e8e8e8;
+    cursor: pointer;
+  }
+  
+  #messageList tbody td:first-child {
+    width: 200x;
+    max-width: 200px;
+  }
+  
+  #messageList tbody td:nth-child(2) {
+    width: 250px;
+    max-width: 250px;
+  }
+  
+  #messageList tbody td:nth-child(3) {
+    width: 250px;
+    max-width: 250px;
+  }
+  
+  #messageOptions {
+    display: flex;
+    gap: 1em;
+  }
 
- 
-
-/* Style for the table header */
-#messageList thead {
-  background-color: #f0f0f0;
-}
-
- 
-
-#messageList th {
-  padding: 12px;
-  font-weight: bold;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-}
-
- 
-
-/* Style for the table body */
-#messageList td {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-}
-
- 
-
-/* Alternate row color for better readability */
-#messageList tbody tr:nth-child(even) {
-  background-color: #f8f8f8;
-}
-
- 
-
-/* Hover effect on rows */
-#messageList tbody tr:hover {
-  background-color: #ebebeb;
-}
-
- 
-
-/* Style for the "Read" column */
-#messageList td:last-child {
-  text-align: center;
-}
+  #messageOptions a {
+    margin-top: 5em;
+    margin-bottom: 0;
+  }
 
 @media only screen and (min-width:700px) {
  

@@ -1,16 +1,30 @@
 const express = require("express")
 const router = new express.Router() 
-const messageController = require("../controllers/messageController")
+const messController = require("../controllers/messageController")
 const utilities = require("../utilities/")
 
 //message inbox page
-router.get("/", utilities.handleErrors(messageController.buildInbox))
+router.get("/", utilities.checkLogin, utilities.handleErrors(messController.buildInbox))
 
 //new message page
-router.get("/compose", utilities.handleErrors(messageController.buildCompose))
+router.get("/compose", utilities.checkLogin, utilities.handleErrors(messController.buildCompose))
 
-router.get("/archive", utilities.handleErrors(messageController.buildArchive))
+//archived messages page
+router.get("/archive", utilities.checkLogin, utilities.handleErrors(messController.buildArchive))
 
-router.post("/send", utilities.handleErrors(messageController.sendMessage))
+//display message
+router.get("/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildByMessageId))
+
+//send a new message POST
+router.post("/send", utilities.checkLogin, utilities.handleErrors(messController.sendMessage))
+
+//mark a message as read POST
+router.post("/read", utilities.handleErrors(messController.markMessageRead))
+
+//archive a message POST
+router.post("/archive", utilities.handleErrors(messController.archiveMessage))
+
+//delete a message POST
+router.post("/delete", utilities.handleErrors(messController.deleteMessage))
 
 module.exports = router;
