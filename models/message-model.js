@@ -44,7 +44,7 @@ async function getUnarchived(
 async function getArchived(
     message_to) {
         try {
-            const sql = "SELECT a.account_firstname, account_lastname, message_from, message_to, message_created, message_read, message_body, message_subject FROM message m FULL JOIN account a ON m.message_from = a.account_id WHERE message_to = $1 AND message_archived = true"
+            const sql = "SELECT a.account_firstname, account_lastname, message_from, message_to, message_created, message_read, message_body, message_subject, message_id FROM message m FULL JOIN account a ON m.message_from = a.account_id WHERE message_to = $1 AND message_archived = true"
             return await pool.query(sql, [
                 message_to])
         } catch (error) {

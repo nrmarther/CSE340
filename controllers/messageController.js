@@ -74,6 +74,25 @@ Message.buildByMessageId = async function(req, res, next) {
 }
 
 /* ****************************************
+*  Deliver Reply Message View
+* *************************************** */
+Message.buildReply = async function(req, res, next) {
+    let nav = await utilities.getNav()
+    let OGMessage = await messageModel.getMessageById(req.params.mess_id)
+    const from = await accModel.getAccountById(data.message_from)
+    let sender_dropdown = await utilities.getAccounts()
+    let message_from = res.locals.accountData.account_id
+    res.render("./messages/reply", {
+        title: "Reply",
+        nav,
+        OGMessage,
+        errors: null,
+        sender_dropdown,
+        message_from
+    })
+}
+
+/* ****************************************
 *  Process new Message POST
 * *************************************** */
 Message.sendMessage = async function(req, res) {
@@ -163,7 +182,7 @@ Message.archiveMessage = async function (req, res, next) {
 }
 
 /* ***************************
- *  delete Message
+ *  delete Message POST
  * ************************** */
 Message.deleteMessage = async function (req, res, next) {
     let nav = await utilities.getNav()

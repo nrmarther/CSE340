@@ -18,6 +18,12 @@ router.get("/:messId", utilities.checkLogin, utilities.handleErrors(messControll
 //send a new message POST
 router.post("/send", utilities.checkLogin, utilities.handleErrors(messController.sendMessage))
 
+//reply to a message page
+router.get("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.replyMessage))
+
+//send message reply POST
+router.post("/reply/:messId", utilities.handleErrors(messController.sendMessage))
+
 //mark a message as read POST
 router.post("/read", utilities.handleErrors(messController.markMessageRead))
 
