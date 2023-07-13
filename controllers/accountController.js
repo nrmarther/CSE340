@@ -1,5 +1,6 @@
 const utilities = require("../utilities/")
 const accountModel = require("../models/account-model")
+const messageModel = require("../models/message-model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -132,6 +133,10 @@ async function accountLogin(req, res) {
    delete accountData.account_password
    const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
    res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+   let account_id = accountData.account_id
+   let countUnread = await messageModel.countUnread(account_id)
+   console.log(countUnread)
+   req.flash("success", "You have " + countUnread.rowCount + " unread messages waiting in your inbox")
    return res.redirect("/account/")
    }
   } catch (error) {

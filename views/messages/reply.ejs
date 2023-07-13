@@ -20,14 +20,18 @@
 
 <form action="/message/send" method="post">
     <label for="message_to">To: </label>
-    <select> <option value="<%= OGMessage.message_from %>" ></option></select><br>
+    <select name="message_to" id="message_to">
+      <option value="<%= recipient.account_id %>">
+        <%=recipient.account_firstname + " " + recipient.account_lastname%>
+      </option>
+    </select><br>
     <label for="message_subject">Subject:</label>
     <input type="text" name="message_subject" id="message_subject" value="<%= subject %>" readonly><br>
     <label for="message_body">Message Text:</label>
     <textarea name="message_body" id="message_body" cols="30" rows="10" > <%= body %> </textarea>
     <input type="submit" value="Send Message" id="submit-button">
     <input type="hidden" name="message_from"
-     <% if(message_from) { %> 
-      value="<%= message_from %>"
+     <% if(sender) { %> 
+      value="<%= sender %>"
     <% } %>>
 </form>

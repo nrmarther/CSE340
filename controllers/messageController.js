@@ -78,17 +78,19 @@ Message.buildByMessageId = async function(req, res, next) {
 * *************************************** */
 Message.buildReply = async function(req, res, next) {
     let nav = await utilities.getNav()
-    let OGMessage = await messageModel.getMessageById(req.params.mess_id)
-    const from = await accModel.getAccountById(data.message_from)
-    let sender_dropdown = await utilities.getAccounts()
-    let message_from = res.locals.accountData.account_id
+    console.log("message_id: " + req.params.messId)
+    let OGMessage = await messageModel.getMessageById(req.params.messId)
+    console.log("original message: " + OGMessage)
+    const recipient = await accModel.getAccountById(OGMessage.message_from)
+    let sender = res.locals.accountData.account_id
+    console.log("sender: " + sender)
     res.render("./messages/reply", {
         title: "Reply",
         nav,
         OGMessage,
         errors: null,
-        sender_dropdown,
-        message_from
+        sender,
+        recipient
     })
 }
 
@@ -102,12 +104,18 @@ Message.sendMessage = async function(req, res) {
           , message_from
           , message_subject
           , message_body} = req.body
+
+    console.log("message_to: " + message_to)
+    console.log("message_from: " + message_from)
+    console.log("message_subject: " + message_subject)
+    console.log("message_body: " + message_body)
     const sendMessage = await messageModel.sendMessage(message_to, message_from, message_subject, message_body)
 
     if (sendMessage) {
         const messages = await messageModel.getUnarchived(res.locals.accountData.account_id)
         const table = await utilities.getMessageTable(messages)
         const messageRecipient = await accModel.getAccountById(message_to)
+        console.log(messageRecipient)
         const messageRecipientName = messageRecipient.account_firstname + " " + messageRecipient.account_lastname
         req.flash(
             "success",

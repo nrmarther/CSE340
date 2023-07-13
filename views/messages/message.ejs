@@ -21,23 +21,24 @@
 
 
 
-<form action="/message/read" method="post">
+<form action="/message/read" method="post" class="form-button">
   <input type="submit" value="Mark Message as Read">
   <input type="hidden" name="message_id"
      <% if(message_id) { %> 
       value="<%= message_id %>"
     <% } %>>
 </form>
-<p><a href="/message/reply/<%=message_id%>">Reply to This Message</a></p>
 
-<form action="/message/archive" method="post">
+<p><a href="/message/reply/<%=message_id%>" class="management-link">Reply to This Message</a></p>
+
+<form action="/message/archive" method="post" class="form-button">
   <input type="submit" value="Archive Message">
   <input type="hidden" name="message_id"
      <% if(message_id) { %> 
       value="<%= message_id %>"
     <% } %>>
 </form>
-<form action="/message/delete" method="post">
+<form action="/message/delete" method="post" class="form-button">
   <input type="submit" value="Delete Message">
   <input type="hidden" name="message_id"
      <% if(message_id) { %> 

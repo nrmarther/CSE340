@@ -332,7 +332,7 @@ input , textarea{
   }
   
   #messageList tbody td:first-child {
-    width: 200x;
+    width: 200px;
     max-width: 200px;
   }
   
@@ -354,6 +354,25 @@ input , textarea{
   #messageOptions a {
     margin-top: 5em;
     margin-bottom: 0;
+  }
+
+  .form-button {
+    display: inline-block;
+    margin: 0;
+    margin-right: 1em; /* Adjust the spacing between form buttons */
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .form-button input[type="submit"] {
+    background-color: teal;
+    color: white;
+    border-radius: .75em;
+    padding: .75em;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
   }
 
 @media only screen and (min-width:700px) {

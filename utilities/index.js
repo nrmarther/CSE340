@@ -248,9 +248,9 @@ Util.getMessageTable = async function (messages) {
  * ************************** */
 Util.buildMessagePage = async function(s, m) {
   let body
-  body = "<h2>" + s.account_firstname + " " + s.account_lastname + "</h2>"
-  body += "<h2>" + m.message_created + "</h2>"
-  body += "<p>" + m.message_body + "</p>"
+  body = "<p>From: " + s.account_firstname + " " + s.account_lastname + "</p>"
+  body += "<p>Time Sent: " + m.message_created + "</p>"
+  body += "<p>Message: " + m.message_body + "</p>"
   return body
 }
 

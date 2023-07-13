@@ -15,14 +15,14 @@ router.get("/archive", utilities.checkLogin, utilities.handleErrors(messControll
 //display message
 router.get("/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildByMessageId))
 
+//reply to a message page
+router.get("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildReply))
+
 //send a new message POST
 router.post("/send", utilities.checkLogin, utilities.handleErrors(messController.sendMessage))
 
-//reply to a message page
-router.get("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.replyMessage))
-
 //send message reply POST
-router.post("/reply/:messId", utilities.handleErrors(messController.sendMessage))
+router.post("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildReply))
 
 //mark a message as read POST
 router.post("/read", utilities.handleErrors(messController.markMessageRead))

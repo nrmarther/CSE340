@@ -102,6 +102,18 @@ async function deleteMessage(message_id) {
     }
 }
 
+/* ***************************
+ *  return count of unread messages in inbox
+ * ************************** */
+async function countUnread(account_id) {
+    try {
+        const sql = "SELECT COUNT(*) as rowCount FROM public.message WHERE message_read = true AND message_archived = false AND message_to = $1"
+        return await pool.query(sql, [account_id])
+    } catch (error) {
+        return error.message
+    }
+}
+
 module.exports = { sendMessage
                  , getUnarchived
                  , getArchived
@@ -109,4 +121,5 @@ module.exports = { sendMessage
                  , markMessageRead
                  , archiveMessage
                  , deleteMessage
+                 , countUnread
                  }
