@@ -78,12 +78,9 @@ Message.buildByMessageId = async function(req, res, next) {
 * *************************************** */
 Message.buildReply = async function(req, res, next) {
     let nav = await utilities.getNav()
-    console.log("message_id: " + req.params.messId)
     let OGMessage = await messageModel.getMessageById(req.params.messId)
-    console.log("original message: " + OGMessage)
     const recipient = await accModel.getAccountById(OGMessage.message_from)
     let sender = res.locals.accountData.account_id
-    console.log("sender: " + sender)
     res.render("./messages/reply", {
         title: "Reply",
         nav,
@@ -105,10 +102,6 @@ Message.sendMessage = async function(req, res) {
           , message_subject
           , message_body} = req.body
 
-    console.log("message_to: " + message_to)
-    console.log("message_from: " + message_from)
-    console.log("message_subject: " + message_subject)
-    console.log("message_body: " + message_body)
     const sendMessage = await messageModel.sendMessage(message_to, message_from, message_subject, message_body)
 
     if (sendMessage) {

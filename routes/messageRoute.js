@@ -2,6 +2,7 @@ const express = require("express")
 const router = new express.Router() 
 const messController = require("../controllers/messageController")
 const utilities = require("../utilities/")
+const validate = require("../utilities/message-validation")
 
 //message inbox page
 router.get("/", utilities.checkLogin, utilities.handleErrors(messController.buildInbox))
@@ -19,10 +20,16 @@ router.get("/:messId", utilities.checkLogin, utilities.handleErrors(messControll
 router.get("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildReply))
 
 //send a new message POST
-router.post("/send", utilities.checkLogin, utilities.handleErrors(messController.sendMessage))
+router.post("/send", 
+            validate.messageRules(),
+            validate.checkComposeData,
+            utilities.handleErrors(messController.sendMessage))
 
 //send message reply POST
-router.post("/reply/:messId", utilities.checkLogin, utilities.handleErrors(messController.buildReply))
+router.post("/reply/:messId", 
+            validate.messageRules(),
+            validate.checkReplyData,
+            utilities.handleErrors(messController.sendMessage))
 
 //mark a message as read POST
 router.post("/read", utilities.handleErrors(messController.markMessageRead))
